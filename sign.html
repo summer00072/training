@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>登录页面</title>
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/global.css">
+
+</head>
+<body>
+<div>
+  <form  class="form-horizontal md" id="myform" action="">
+  <div class="reg pull-right">
+    <a href="register.html">注册</a>
+  </div>
+    <div class="full-img">
+    <div class="box">
+    <div class="form-group">
+      <label class="col-md-offset-1 col-md-3 control-label" for="username">用户名：</label>
+      <div class="col-md-6">
+        <input class="form-control" placeholder="请输入用户名" id="username" type="text">
+      </div>
+      <div class="col-md-offset-4 col-md-6">
+        <span class="help-block">用户名长度在6-12之间</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-offset-1 col-md-3 control-label" for="password">密码：</label>
+
+      <div class="col-md-6">
+        <input class="form-control" placeholder="请输入密码" id="password" type="password">
+      </div>
+      <div class="col-md-offset-4 col-md-6">
+        <span class="help-block">密码必须包含数字、字母,不少于6位</span>
+      </div>
+    </div>
+    <!--bootstrap编码规范中指定，单选、复选按钮放在label中，不写for属性-->
+    <div class="row">
+      <div class="col-md-8 col-md-offset-4">
+        <div class="checkbox">
+          <label>
+            <input id="checkbox1" type="checkbox"  checked="checked" name="principle">我接受本站的使用条款
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row text-center">
+        <input id="sign" class="btn-s" type="submit" value="登录">
+      <span class="help-block orange">
+        没有账号，<a  href="register.html">注册</a>一个
+     </span>
+    </div>
+</div>
+    </div>
+  </form>
+  <form class="xs" >
+    <div class="form-group">
+      <label class="col-md-offset-1 col-md-3 control-label" for="username1">用户名：</label>
+      <div class="col-md-5">
+
+        <input class="form-control" placeholder="请输入用户名" id="username1" type="text">
+      </div>
+      <div class="col-md-offset-4 col-md-5">
+        <span class="help-block">用户名长度在6-12之间</span>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="col-md-offset-1 col-md-3 control-label"  for="password1">密码：</label>
+
+      <div class="col-md-5">
+        <input class="form-control" placeholder="请输入密码" id="password1" type="password">
+      </div>
+      <div class="col-md-offset-4 col-md-5">
+        <span class="help-block">密码必须包含数字、字母,不少于6位</span>
+      </div>
+    </div>
+    <!--bootstrap编码规范中指定，单选、复选按钮放在label中，不写for属性-->
+    <div class="row">
+      <div class="col-md-8 col-md-offset-4">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox">我接受本站的使用条款
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="row text-center">
+      <input class="btn-s" type="submit" value="登录">
+      <span class="help-block orange">
+        没有账号，<a  href="register.html">注册</a>一个
+     </span>
+    </div>
+  </form>
+</div>
+
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  function check(){
+    var user=$("#username").val();
+    if(user==""){
+      alert("用户名不能为空");
+    }
+    var psw = $("#password").val();
+    regExp=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/;
+    if (psw == "") {
+      alert("密码不能为空");
+      return false;
+    }
+
+    else if (!regExp.test(psw)){
+      alert("密码格式错误");
+      return false;
+    }
+
+     if(!($("#checkbox1").attr("checked")))
+     {
+        alert("您必须接收网站协议，才可继续注册");
+        return false;
+      }
+
+  }
+  $(function(){
+    $("#myform").submit(function(){
+            return check();
+
+    })
+  })
+</script>
+</body>
+</html>

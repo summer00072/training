@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+  <title>注册页面</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+
+
+
+</head>
+
+<body>
+<div class="container">
+  <form id="myform1" class="form-horizontal" action="">
+
+      <div class="form-group">
+      <h2 class="col-md-offset-6 col-md-3 col-xs-offset-4 col-xs-5">注册</h2>
+        <a class="col-md-2 col-xs-3 reg" href="sign.html">登录</a>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label" for="name">姓名：</label>
+        <div class="col-md-8">
+           <input class="form-control" placeholder="请输入您的真实姓名" id="name" type="text">
+        </div>
+      </div>
+
+    <div class="form-group">
+      <label class="col-md-3 control-label" for="name">性别：</label>
+      <div class="col-md-8">
+        <input type="radio" name="sex" value="男">男
+        <input type="radio" name="sex" value="女">女
+      </div>
+    </div>
+      <div class="form-group">
+      <label class="col-md-3 control-label" for="phone">联系方式：</label>
+      <div class="col-md-8">
+        <input class="form-control" placeholder="请输入您的联系方式" id="phone" type="text">
+      </div>
+      </div>
+      <div class="form-group">
+
+        <label class="col-md-3 control-label" for="username">用户名：</label>
+
+        <div class="col-md-8">
+          <input class="form-control" placeholder="用户名长度在6-12之间" id="username" type="text">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label" for="password">密码：</label>
+        <div class="col-md-8">
+          <input class="form-control" placeholder="密码必须包含数字、字母，不少于6位" id="password" type="password">
+        </div>
+      </div>
+    <div class="form-group">
+      <label class="col-md-3 control-label" for="password">密码确认：</label>
+      <div class="col-md-8">
+        <input class="form-control" placeholder="请再次输入密码" id="password1" type="password">
+      </div>
+    </div>
+      <!--bootstrap编码规范中指定，单选、复选按钮放在label中，不写for属性-->
+
+      <div class="row">
+        <div class="col-md-8 col-md-offset-4">
+          <input  class="btn-s" type="submit"  value="提交">
+          <input class="btn-s" type="reset" value="重置">
+        </div>
+        <div id="mymodal" class="modal fade">
+          <!--半透明的黑色遮罩层-->
+          <div class="modal-dialog modal-lg">
+            <!--宽/高/定位-->
+            <div class="modal-content">
+              <!--边框/背景色/阴影-->
+              <div class="modal-header">
+                <span class="close" data-dismiss="modal">&times;</span>
+                <h3 class="modal-title">注册成功</h3>
+
+              </div>
+              <div class="modal-body">
+                <p class="text-center">恭喜您，注册成功！去<a class="reg1" href="sign.html">登录</a></p>
+              </div>
+              <div class="modal-footer">
+                  <hr>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </form>
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  function check() {
+    var name = $("#name").val();
+    var nameReg= /^([\u4e00-\u9fa5]){2,7}$/;
+    if (name== "") {
+      alert("姓名不能为空");
+      return false;
+    }
+    else if(nameReg.test(name) == false){
+      alert("姓名格式错误，请重新输入");
+      return false;
+    }
+    // for (var i = 0; i < name.length; i++) {
+    //   var j = name.substring(i,i + 1)
+    //   if (isNaN(j) == false) {
+    //     alert("姓名中不能有数字");
+    //     return false;
+    //   }
+    // }
+    var mobile = $("#phone").val();
+    var regMobile = /^1\d{10}$/;
+    if (regMobile.test(mobile) == false) {
+
+      alert("手机号码输入不正确，请重新输入");
+      return false;
+    }
+
+    var user = $("#username").val();
+    if (user == "") {
+      alert("用户名不能为空");
+      return false;
+    }
+    var psw = $("#password").val();
+    var repsw = $("#password1").val();
+    regExp = /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,12}$/;
+    if (psw == "") {
+      alert("密码不能为空");
+      return false;
+    }
+
+    else if (!regExp.test($("#password").val()))
+    {
+      alert("密码格式错误");
+      return false;
+
+    }
+  else if (psw !== repsw){
+      alert("两次输入密码不一致");
+      return false;
+    }
+  }
+  $(function(){
+    $("#myform1").submit(function(){
+      return check();
+
+    })
+  })
+</script>
+</body>
+</html>

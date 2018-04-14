@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>管理员页面</title>
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <style>
+
+        /*把二级下拉彩单之间的margin和padding去掉*/
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /*然后设置div>ul>li，需要注意的是，>是子代选择器。因为我们不需要全部的li左浮动。*/
+        /*div>ul>li{
+            float: left;
+        }*/
+        /*接着在设置去掉所有li的圆点符号，并且给宽高，居中以及背景色。*/
+        li{
+            list-style-type: none;
+            width: 200px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            /*background: lightblue;*/
+        }
+        /*接着我们把下面部分的菜单隐藏起来，如图，用到空格隔开，注意，空格表示后代选择器。   */
+        div ul ul{
+            display: none;
+        }
+        div>ul>li{
+        	height:200px;
+
+        }
+
+    </style>
+</head>
+<body>
+<div id="content" class="row-fluid">
+    <div class="col-md-3">
+        <ul>
+            <li>题库管理
+                <ul>
+                    <li><a herf="">类型A</a></li>
+                    <li><a herf="">类型B</a></li>
+                    <li><a herf="">类型C</a></li>
+                </ul>
+            </li>
+
+        </ul>
+        <li><a herf="">员工信息查询</a></li>
+        <li><a herf="">员工考试审核</a></li>
+    </div>
+    <div class="col-md-9">
+        <h2>Main content</h2>
+    </div>
+
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    $(function(){
+        $("div>ul>li").hover(function(){
+            $(this).children().stop().slideToggle();
+        });
+    });
+</script>
+</body>
+</html>
